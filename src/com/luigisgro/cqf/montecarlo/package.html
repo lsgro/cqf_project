@@ -1,0 +1,18 @@
+<html>
+<head></head>
+<body>
+<p>The Monte Carlo framework, in a generic implementation for curve time series, with
+a generic number of factors.</p>
+<p>The class {@link com.luigisgro.cqf.montecarlo.MonteCarloSimulation} handles:
+<ul>
+<li>the generation of the random vectors, by means of a {@link com.luigisgro.cqf.montecarlo.RandomVectorGenerator}</li>
+<li>the iterative generation of scenarios, by means a {@link com.luigisgro.cqf.montecarlo.MultiFactorModel}, which is responsible of the
+simulation of the underlyings</li>
+<li>the feeding of the scenarios to a {@link com.luigisgro.cqf.montecarlo.MonteCarloEvaluator}, which knows how to generate a value
+for the portfolio and when to stop the simulation</li>
+</ul>
+Apart from the classes implementing {@link com.luigisgro.cqf.montecarlo.RandomVectorGenerator}, this package contains no
+specific logic, as it is meant as a generic framework for iterative simulations.
+</p>
+</body>
+</html>

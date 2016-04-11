@@ -1,0 +1,41 @@
+<project name="Project6" default="dist" basedir=".">
+	<description>
+CQF Final Project Code buildfile
+</description>
+	<!-- set global properties for this build -->
+	<property name="src" location="src" />
+	<property name="res" location="resources" />
+	<property name="build" location="bin" />
+	<property name="dist" location="dist" />
+	<property name="lib" location="lib" />
+	
+	<path id="class.path">
+		<pathelement location="${lib}/commons-cli-1.2.jar" />
+		<pathelement location="${lib}/commons-math-2.2.jar" />
+	</path>
+
+	<target name="compile" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}">
+			<classpath refid="class.path" />
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}" />
+		<mkdir dir="${dist}/lib" />
+		<copy todir="${dist}/lib">
+			<fileset dir="${lib}" includes="commons-cli-1.2.jar commons-math-2.2.jar" />
+		</copy>
+		<jar jarfile="${dist}/project6.jar" basedir="${build}" manifest="${res}/manifest.txt" />
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete>
+			<dirset dir="${build}" includes="**/*" />
+		</delete>
+		<delete dir="${dist}" />
+	</target>
+</project>
